@@ -16,12 +16,15 @@
 	  </Menus>
 		  
     <Groups>
+		
       <Group guid="guidPacHelperPackageCmdSet" id="PacMenuGroup" priority="0x0600">
 		<Parent guid="guidPacHelperPackageCmdSet" id="PacMenu" />
       </Group>
-      <Group guid="guidPacHelperPackageCmdSet1" id="MyMenuGroup" priority="0x0600">
+		
+      <Group guid="guidPacHelperPackageCmdSet" id="MyMenuGroup" priority="0x0600">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS" />
       </Group>
+		
     </Groups>
 
     <Buttons>
@@ -42,8 +45,8 @@
         </Strings>
       </Button>
 		
-      <Button guid="guidPacHelperPackageCmdSet1" id="cmdidorg_select" priority="0x0100" type="Button">
-        <Parent guid="guidPacHelperPackageCmdSet1" id="MyMenuGroup" />
+      <Button guid="guidPacHelperPackageCmdSet" id="cmdidorg_select" priority="0x0100" type="Button">
+        <Parent guid="guidPacHelperPackageCmdSet" id="MyMenuGroup" />
         <Strings>
           <ButtonText>Invoke org-select</ButtonText>
         </Strings>
@@ -56,17 +59,13 @@
     <GuidSymbol name="guidPacHelperPackage" value="{5a74d077-a176-4406-a5ca-48f36ef1d0f7}" />
 
     <GuidSymbol name="guidPacHelperPackageCmdSet" value="{a3659495-15ca-4b04-a1fb-40dabda01a35}">
-		<IDSymbol name="PacMenu" value="0x1040" />
-      <IDSymbol name="PacMenuGroup" value="0x1020" />
-      <IDSymbol name="VSCommandTableId" value="0x0100" />
-      <IDSymbol name="cmdidPacSolutionSync" value="4129" />
+	    <IDSymbol name="PacMenu" value="0x1040" />
+        <IDSymbol name="PacMenuGroup" value="0x1020" />
+	    <IDSymbol name="VSCommandTableId" value="0x0100" />
+		<IDSymbol name="MyMenuGroup" value="0x1021" />
+		<IDSymbol name="cmdidorg_select" value="0x0101" />
+        <IDSymbol name="cmdidPacSolutionSync" value="0x1022" />	
     </GuidSymbol>
  
-  
-    <GuidSymbol value="{a86c62ae-a8dc-4a62-9ece-b2bc2f5fb874}" name="guidPacHelperPackageCmdSet1">
-      <IDSymbol value="4128" name="MyMenuGroup" />
-      <IDSymbol value="256" name="cmdidorg_select" />
-    </GuidSymbol>
-  
   </Symbols>
 </CommandTable>

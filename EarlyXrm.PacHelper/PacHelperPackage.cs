@@ -17,9 +17,6 @@ namespace EarlyXrm.PacHelper
 
         public const string guidPacHelperPackageCmdSetString = "a3659495-15ca-4b04-a1fb-40dabda01a35";
         public static Guid guidPacHelperPackageCmdSet = new Guid(guidPacHelperPackageCmdSetString);
-
-        public const string guidPacHelperPackageCmdSet1String = "a86c62ae-a8dc-4a62-9ece-b2bc2f5fb874";
-        public static Guid guidPacHelperPackageCmdSet1 = new Guid(guidPacHelperPackageCmdSet1String);
     }
     /// <summary>
     /// Helper class that encapsulates all CommandIDs uses across VS Package.
@@ -29,8 +26,8 @@ namespace EarlyXrm.PacHelper
         public const int PacMenu = 0x1040;
         public const int PacMenuGroup = 0x1020;
         public const int VSCommandTableId = 0x0100;
-        public const int cmdidPacSolutionSync = 0x1021;
-        public const int MyMenuGroup = 0x1020;
-        public const int cmdidorg_select = 0x0100;
+        public const int MyMenuGroup = 0x1021;
+        public const int cmdidorg_select = 0x0101;
+        public const int cmdidPacSolutionSync = 0x1022;
     }
 }
