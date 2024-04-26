@@ -45,8 +45,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Commands\org_select.cs" />
-    <Compile Include="Commands\PacSolutionSync.cs" />
+    <Compile Include="Commands\PowershellBase.cs" />
     <Compile Include="PacHelperPackage.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -59,9 +58,12 @@
       <DependentUpon>source.extension.vsixmanifest</DependentUpon>
     </Compile>
     <Compile Include="VSPackage.cs" />
-    <Compile Include="Commands\VSCommandTable.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Commands\PacOrgSelect.ps1" />
+    <EmbeddedResource Include="Commands\PacSolutionSync.ps1" />
+    <EmbeddedResource Include="Commands\PacSolutionImport.ps1" />
+    <EmbeddedResource Include="Commands\PacDataSync.ps1" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
       <Generator>VsixManifestGenerator</Generator>

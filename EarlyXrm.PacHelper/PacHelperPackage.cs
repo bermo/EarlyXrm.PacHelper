@@ -29,5 +29,7 @@ namespace EarlyXrm.PacHelper
         public const int MyMenuGroup = 0x1021;
         public const int cmdidorg_select = 0x0101;
         public const int cmdidPacSolutionSync = 0x1022;
+        public const int cmdidPacSolutionImport = 0x1023;
+        public const int PacDataSync = 0x1024;
     }
 }

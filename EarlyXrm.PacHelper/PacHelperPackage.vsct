@@ -41,9 +41,27 @@
 		<CommandFlag>DefaultInvisible</CommandFlag>
 		<CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
-          <ButtonText>Invoke PacSolutionSync</ButtonText>
+          <ButtonText>pac solution sync</ButtonText>
         </Strings>
       </Button>
+
+	  <Button guid="guidPacHelperPackageCmdSet" id="cmdidPacSolutionImport" priority="0x0100" type="Button">
+			<Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_SCC" />
+			<CommandFlag>DefaultInvisible</CommandFlag>
+			<CommandFlag>DynamicVisibility</CommandFlag>
+			<Strings>
+				<ButtonText>pac solution import</ButtonText>
+			</Strings>
+		</Button>
+
+		<Button guid="guidPacHelperPackageCmdSet" id="PacDataSync" priority="0x0100" type="Button">
+			<Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_SCC" />
+			<CommandFlag>DefaultInvisible</CommandFlag>
+			<CommandFlag>DynamicVisibility</CommandFlag>
+			<Strings>
+				<ButtonText>pac data sync</ButtonText>
+			</Strings>
+		</Button>
 		
       <Button guid="guidPacHelperPackageCmdSet" id="cmdidorg_select" priority="0x0100" type="Button">
         <Parent guid="guidPacHelperPackageCmdSet" id="MyMenuGroup" />
@@ -64,7 +82,9 @@
 	    <IDSymbol name="VSCommandTableId" value="0x0100" />
 		<IDSymbol name="MyMenuGroup" value="0x1021" />
 		<IDSymbol name="cmdidorg_select" value="0x0101" />
-        <IDSymbol name="cmdidPacSolutionSync" value="0x1022" />	
+        <IDSymbol name="cmdidPacSolutionSync" value="0x1022" />
+		<IDSymbol name="cmdidPacSolutionImport" value="0x1023" />
+		<IDSymbol name="PacDataSync" value="0x1024" />
     </GuidSymbol>
  
   </Symbols>
