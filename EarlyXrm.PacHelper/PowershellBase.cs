@@ -10,6 +10,7 @@
     using System.Threading.Tasks;
     using System.Reflection;
     using System.IO;
+    using System.Collections.Generic;
 
     internal abstract class PowershellBase
     {
@@ -29,76 +30,94 @@
             {
                 ThreadHelper.ThrowIfNotOnUIThread();
 
-                var name = resource + ".ps1";
+                var process = new System.Diagnostics.Process();
+                process.StartInfo.FileName = "powershell.exe";
+                process.StartInfo.Arguments = $@"-NoExit -ExecutionPolicy Unrestricted";
+
+                var scriptName = resource + ".ps1";
+
+                if (_dte.Solution.Count == 0)
+                {
+                    var resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream($"EarlyXrm.PacHelper.Commands.{scriptName}");
+
+                    string cmd;
+                    using (var fileStream = new StreamReader(resourceStream))
+                        cmd = fileStream.ReadToEnd();
+
+                    process.StartInfo.Arguments += $" -Command \"{cmd}\"";
+                    process.Start();
+
+                    return;
+                }
 
                 var solutionDir = Path.GetDirectoryName(_dte.Solution.FullName);
-                var solutionArg = $@" -SolutionDir ""{solutionDir}""";
 
+                var scriptArgs = new Dictionary<string, string>
+                {
+                    { "SolutionDir", solutionDir }
+                };
+
+                var projDir = ""; 
                 var targetPath = "";
-                var targetDirArg = "";
-                var projDir = "";
-                var projectArg = "";
-                var itemArg = "";
 
                 var activeProjects = ((Array)_dte.ActiveSolutionProjects).Cast<Project>().ToArray();
 
                 if (activeProjects.Length == 1)
                 {
                     projDir = Path.GetDirectoryName(activeProjects[0].FullName);
-                    projectArg = $@" -ProjDir ""{projDir}""";
+                    scriptArgs.Add("ProjDir", projDir);
 
                     var selectedItem = SelectedItem(_dte);
-                    itemArg = selectedItem == null ? "" :  $@" -ItemPath ""{selectedItem}""";
+                    if (selectedItem != null)
+                        scriptArgs.Add("ItemPath", selectedItem);
 
                     var activeConfig = activeProjects[0].ConfigurationManager.ActiveConfiguration;
                     var targetPathProperty = activeConfig.Properties.Item("OutputPath");
                     targetPath = targetPathProperty.Value.ToString();
-                    targetDirArg = $@" -TargetDir {projDir}\{targetPath}";
+                    scriptArgs.Add("TargetDir", $"{projDir}\\{targetPath}");
                 }
-                
-                var process = new System.Diagnostics.Process();
-                process.StartInfo.FileName = "powershell.exe";
-                process.StartInfo.Arguments = $@"-NoExit -ExecutionPolicy Unrestricted ";
 
                 if (targetPath == "")
                 {
-                    var resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream($"EarlyXrm.PacHelper.Commands.{name}");
+                    var resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream($"EarlyXrm.PacHelper.Commands.{scriptName}");
 
                     string cmd;
                     using (var fileStream = new StreamReader(resourceStream))
                         cmd = fileStream.ReadToEnd();
 
-                    process.StartInfo.Arguments += $@"-Command ""{cmd}""";
+                    process.StartInfo.Arguments += $" -Command \"{cmd}\"";
                 }
                 else
                 {
-                    var projFile = $"{projDir}\\{name}";
-                    var solutionFile = $"{solutionDir}\\{name}";
+                    var projFile = $"{projDir}\\{scriptName}";
+                    var solutionFile = $"{solutionDir}\\{scriptName}";
 
                     if (projDir != "" && File.Exists(projFile))
                     {
-                        process.StartInfo.Arguments += $@"-File ""{projFile}""";
+                        process.StartInfo.Arguments += $" -File \"{projFile}\"";
                     }
                     else if (solutionFile != "" && File.Exists(solutionFile))
                     {
-                        process.StartInfo.Arguments += $@"-File ""{solutionFile}""";
+                        process.StartInfo.Arguments += $" -File \"{solutionFile}\"";
                     }
                     else
                     {
-                        var targetFile = $"{projDir}\\{targetPath}{name}";
+                        var targetFile = $"{projDir}\\{targetPath}{scriptName}";
 
-                        var resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream($"EarlyXrm.PacHelper.Commands.{name}");
+                        var resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream($"EarlyXrm.PacHelper.Commands.{scriptName}");
 
                         using (var fileStream = File.Open(targetFile, FileMode.Create))
                                 resourceStream.CopyTo(fileStream);
 
-                        process.StartInfo.Arguments += $@"-File ""{targetFile}""";
+                        process.StartInfo.Arguments += $" -File \"{targetFile}\"";
                     }
 
                     process.StartInfo.WorkingDirectory = projDir;
                 }
 
-                process.StartInfo.Arguments += $@"{solutionArg}{projectArg}{itemArg}{targetDirArg}";
+                foreach(var scriptArg in scriptArgs)
+                    process.StartInfo.Arguments += $@" -{scriptArg.Key} ""{scriptArg.Value.TrimEnd('\\')}""";
+
                 process.Start();
             }
 
@@ -124,10 +143,21 @@
         {
             ThreadHelper.ThrowIfNotOnUIThread();
 
-            var activeDocument = ((Array)dte.ToolWindows.SolutionExplorer.SelectedItems).Cast<UIHierarchyItem>().FirstOrDefault();
-            var projectItem = activeDocument?.Object as ProjectItem;
+            var selectedItems = ((Array)dte.ToolWindows.SolutionExplorer.SelectedItems).Cast<UIHierarchyItem>().ToArray();
             
-            if (projectItem?.FileCount != 1) return null;
+            if (selectedItems.Length != 1)
+            {
+                return null;
+            }
+                
+            var selectedItem = selectedItems[0];
+
+            var projectItem = selectedItem?.Object as ProjectItem;
+
+            if (projectItem?.FileCount != 1)
+            {
+                return null;
+            }
 
             var selectedFilename = projectItem.FileNames[0];
 
