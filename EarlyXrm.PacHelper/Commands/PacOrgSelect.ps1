@@ -1,1 +1,5 @@
-﻿pac org list
+﻿param($SolutionDir)
+
+write-host "SolDir: $SolutionDir"
+
+pac org list

@@ -29,7 +29,7 @@
 
             foreach (var script in scripts)
             {
-                await Commands.PowershellBase.InitializeAsync(this, script.Key, script.Value.Item1, script.Value.Item2);
+                await PowershellBase.InitializeAsync(this, script.Key, script.Value.Item1, script.Value.Item2);
             }
         }
     }
