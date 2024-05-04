@@ -31,5 +31,6 @@ namespace EarlyXrm.PacHelper
         public const int cmdidPacSolutionSync = 0x1022;
         public const int cmdidPacSolutionImport = 0x1023;
         public const int PacDataSync = 0x1024;
+        public const int PacDataImport = 0x1025;
     }
 }

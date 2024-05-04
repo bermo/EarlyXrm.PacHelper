@@ -62,6 +62,15 @@
 				<ButtonText>pac data sync</ButtonText>
 			</Strings>
 		</Button>
+
+		<Button guid="guidPacHelperPackageCmdSet" id="PacDataImport" priority="0x0100" type="Button">
+			<Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_SCC" />
+			<CommandFlag>DefaultInvisible</CommandFlag>
+			<CommandFlag>DynamicVisibility</CommandFlag>
+			<Strings>
+				<ButtonText>pac data import</ButtonText>
+			</Strings>
+		</Button>
 		
       <Button guid="guidPacHelperPackageCmdSet" id="cmdidorg_select" priority="0x0100" type="Button">
         <Parent guid="guidPacHelperPackageCmdSet" id="MyMenuGroup" />
@@ -85,6 +94,7 @@
         <IDSymbol name="cmdidPacSolutionSync" value="0x1022" />
 		<IDSymbol name="cmdidPacSolutionImport" value="0x1023" />
 		<IDSymbol name="PacDataSync" value="0x1024" />
+		<IDSymbol name="PacDataImport" value="0x1025" />
     </GuidSymbol>
  
   </Symbols>

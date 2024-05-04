@@ -24,7 +24,8 @@
                 { PackageIds.cmdidorg_select, ("PacOrgSelect", "") },
                 { PackageIds.cmdidPacSolutionSync, ("PacSolutionSync", ".cdsproj") },
                 { PackageIds.cmdidPacSolutionImport, ("PacSolutionImport", ".cdsproj") },
-                { PackageIds.PacDataSync, ("PacDataSync", "schema.xml") }
+                { PackageIds.PacDataSync, ("PacDataSync", "schema.xml") },
+                { PackageIds.PacDataImport, ("PacDataImport", "schema.xml") }
             };
 
             foreach (var script in scripts)
