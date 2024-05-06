@@ -19,18 +19,22 @@
         {
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
 
-            var scripts = new Dictionary<int, (string, string)>
+            var scripts = new Dictionary<string, string>
             {
-                { PackageIds.cmdidorg_select, ("PacOrgSelect", "") },
-                { PackageIds.cmdidPacSolutionSync, ("PacSolutionSync", ".cdsproj") },
-                { PackageIds.cmdidPacSolutionImport, ("PacSolutionImport", ".cdsproj") },
-                { PackageIds.PacDataSync, ("PacDataSync", "schema.xml") },
-                { PackageIds.PacDataImport, ("PacDataImport", "schema.xml") }
+                { nameof(PackageIds.PacOrgSelect), "" },
+
+                { nameof(PackageIds.PacSolutionSync), ".cdsproj" },
+                { nameof(PackageIds.PacSolutionImport), ".cdsproj" },
+
+                { nameof(PackageIds.PacDataSync), "schema.xml" },
+                { nameof(PackageIds.PacDataImport), "schema.xml" }
             };
 
             foreach (var script in scripts)
             {
-                await PowershellBase.InitializeAsync(this, script.Key, script.Value.Item1, script.Value.Item2);
+                var id = (int)typeof(PackageIds).GetField(script.Key, System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static).GetRawConstantValue();
+
+                await PowershellBase.InitializeAsync(this, id, script.Key, script.Value);
             }
         }
     }

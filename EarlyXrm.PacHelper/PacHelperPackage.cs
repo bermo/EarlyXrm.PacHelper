@@ -25,11 +25,10 @@ namespace EarlyXrm.PacHelper
     {
         public const int PacMenu = 0x1040;
         public const int PacMenuGroup = 0x1020;
-        public const int VSCommandTableId = 0x0100;
-        public const int MyMenuGroup = 0x1021;
-        public const int cmdidorg_select = 0x0101;
-        public const int cmdidPacSolutionSync = 0x1022;
-        public const int cmdidPacSolutionImport = 0x1023;
+        public const int ToolsMenu = 0x1021;
+        public const int PacOrgSelect = 0x0101;
+        public const int PacSolutionSync = 0x1022;
+        public const int PacSolutionImport = 0x1023;
         public const int PacDataSync = 0x1024;
         public const int PacDataImport = 0x1025;
     }
