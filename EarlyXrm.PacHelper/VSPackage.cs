@@ -27,7 +27,10 @@
                 { nameof(PackageIds.PacSolutionImport), ".cdsproj" },
 
                 { nameof(PackageIds.PacDataSync), "schema.xml" },
-                { nameof(PackageIds.PacDataImport), "schema.xml" }
+                { nameof(PackageIds.PacDataImport), "schema.xml" },
+
+                { nameof(PackageIds.PacPagesSync), "website.yml" },
+                { nameof(PackageIds.PacPagesImport), "website.yml" }
             };
 
             foreach (var script in scripts)

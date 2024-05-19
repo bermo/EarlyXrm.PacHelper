@@ -54,6 +54,22 @@
 					<ButtonText>pac data import</ButtonText>
 				</Strings>
 			</Button>
+			<Button guid="guidPacHelperPackageCmdSet" id="PacPagesSync" priority="0x0100" type="Button">
+				<Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_SCC" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<ButtonText>pac pages sync</ButtonText>
+				</Strings>
+			</Button>
+			<Button guid="guidPacHelperPackageCmdSet" id="PacPagesImport" priority="0x0100" type="Button">
+				<Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_SCC" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<ButtonText>pac pages import</ButtonText>
+				</Strings>
+			</Button>
 			<Button guid="guidPacHelperPackageCmdSet" id="PacOrgSelect" priority="0x0100" type="Button">
 				<Parent guid="guidPacHelperPackageCmdSet" id="ToolsMenu" />
 				<Strings>
@@ -74,6 +90,8 @@
 			<IDSymbol name="PacSolutionImport" value="0x1023" />
 			<IDSymbol name="PacDataSync" value="0x1024" />
 			<IDSymbol name="PacDataImport" value="0x1025" />
+			<IDSymbol name="PacPagesSync" value="0x1026" />
+			<IDSymbol name="PacPagesImport" value="0x1027" />
 		</GuidSymbol>
 	</Symbols>
 </CommandTable>
