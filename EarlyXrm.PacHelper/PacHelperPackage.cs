@@ -29,6 +29,7 @@ namespace EarlyXrm.PacHelper
         public const int PacOrgSelect = 0x0101;
         public const int PacSolutionSync = 0x1022;
         public const int PacSolutionImport = 0x1023;
+        public const int PacSolutionClone = 0x1028;
         public const int PacDataSync = 0x1024;
         public const int PacDataImport = 0x1025;
         public const int PacPagesSync = 0x1026;

@@ -25,6 +25,7 @@
 
                 { nameof(PackageIds.PacSolutionSync), ".cdsproj" },
                 { nameof(PackageIds.PacSolutionImport), ".cdsproj" },
+                { nameof(PackageIds.PacSolutionClone), ".csproj" },
 
                 { nameof(PackageIds.PacDataSync), "schema.xml" },
                 { nameof(PackageIds.PacDataImport), "schema.xml" },

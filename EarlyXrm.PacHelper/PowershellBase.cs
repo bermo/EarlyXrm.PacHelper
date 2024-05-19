@@ -154,6 +154,12 @@
 
             var projectItem = selectedItem?.Object as ProjectItem;
 
+            if (projectItem == null)
+            {
+                var project = selectedItem?.Object as Project;
+                return project.FullName;
+            }
+
             if (projectItem?.FileCount != 1)
             {
                 return null;

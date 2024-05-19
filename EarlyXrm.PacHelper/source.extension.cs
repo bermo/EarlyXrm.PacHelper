@@ -9,7 +9,7 @@ namespace EarlyXrm.PacHelper
     {
         public const string Id = "EarlyXrm.PacHelper.af7a04ec-48a5-42f8-9642-ee70f3f209ed";
         public const string Name = "EarlyXrm.PacHelper";
-        public const string Description = @"Empty VSIX Project.";
+        public const string Description = @"Helper for Power Platform CLIH";
         public const string Language = "en-US";
         public const string Version = "1.0";
         public const string Author = "Andy Berman";
