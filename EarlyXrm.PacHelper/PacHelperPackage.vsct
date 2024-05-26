@@ -84,6 +84,18 @@
 					<ButtonText>pac org select</ButtonText>
 				</Strings>
 			</Button>
+			<Button guid="guidPacHelperPackageCmdSet" id="PacToolPluginRegistration" priority="0x0100" type="Button">
+				<Parent guid="guidPacHelperPackageCmdSet" id="ToolsMenu" />
+				<Strings>
+					<ButtonText>pac tool plugin registration</ButtonText>
+				</Strings>
+			</Button>
+			<Button guid="guidPacHelperPackageCmdSet" id="PacToolConfigMigration" priority="0x0100" type="Button">
+				<Parent guid="guidPacHelperPackageCmdSet" id="ToolsMenu" />
+				<Strings>
+					<ButtonText>pac tool config migration</ButtonText>
+				</Strings>
+			</Button>
 		</Buttons>
 	</Commands>
 
@@ -96,11 +108,13 @@
 			<IDSymbol name="PacOrgSelect" value="0x0101" />
 			<IDSymbol name="PacSolutionSync" value="0x1022" />
 			<IDSymbol name="PacSolutionImport" value="0x1023" />
-			<IDSymbol name="PacSolutionClone" value="0x1028" />
 			<IDSymbol name="PacDataSync" value="0x1024" />
 			<IDSymbol name="PacDataImport" value="0x1025" />
 			<IDSymbol name="PacPagesSync" value="0x1026" />
 			<IDSymbol name="PacPagesImport" value="0x1027" />
+			<IDSymbol name="PacSolutionClone" value="0x1028" />
+			<IDSymbol name="PacToolPluginRegistration" value="0x1029" />
+			<IDSymbol name="PacToolConfigMigration" value="0x1030" />
 		</GuidSymbol>
 	</Symbols>
 </CommandTable>

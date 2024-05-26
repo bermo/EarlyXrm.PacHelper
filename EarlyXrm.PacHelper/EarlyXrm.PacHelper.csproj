@@ -68,6 +68,9 @@
     <EmbeddedResource Include="Commands\PacPagesSync.ps1" />
     <EmbeddedResource Include="Commands\PacPagesImport.ps1" />
     <EmbeddedResource Include="Commands\PacSolutionClone.ps1" />
+    <EmbeddedResource Include="Commands\PacPluginPush.ps1" />
+    <EmbeddedResource Include="Commands\PacToolPluginRegistration.ps1" />
+    <EmbeddedResource Include="Commands\PacToolConfigMigration.ps1" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
       <Generator>VsixManifestGenerator</Generator>

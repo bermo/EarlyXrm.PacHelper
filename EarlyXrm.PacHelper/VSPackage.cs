@@ -22,6 +22,8 @@
             var scripts = new Dictionary<string, string>
             {
                 { nameof(PackageIds.PacOrgSelect), "" },
+                { nameof(PackageIds.PacToolConfigMigration), "" },
+                { nameof(PackageIds.PacToolPluginRegistration), "" },
 
                 { nameof(PackageIds.PacSolutionSync), ".cdsproj" },
                 { nameof(PackageIds.PacSolutionImport), ".cdsproj" },
