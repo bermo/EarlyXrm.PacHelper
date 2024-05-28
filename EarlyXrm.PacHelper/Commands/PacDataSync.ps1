@@ -16,8 +16,6 @@ $zipFile = "$fileName.zip"
 write-host $fileName
 write-host $directory
 
-#. ./PacOrgSelect.ps1
-
 pac data export -sf $ItemPath -o -df $zipFile
 Expand-Archive -path $zipFile -DestinationPath $directory -Force
 

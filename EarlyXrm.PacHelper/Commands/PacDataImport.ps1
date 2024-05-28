@@ -20,6 +20,4 @@ write-host "Zip destination: $destination"
 
 Compress-Archive $directory\*.* -DestinationPath $destination -Update
 
-#. ./PacOrgSelect.ps1
-
 pac data import --data $destination

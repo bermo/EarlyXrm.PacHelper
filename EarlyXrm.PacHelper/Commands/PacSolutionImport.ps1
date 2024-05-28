@@ -4,8 +4,6 @@
 
 $directory = [System.IO.Path]::GetDirectoryName($ItemPath)
 
-#. .\PacOrgSelect.ps1
-
 cd $directory
 
 pac solution pack -p Unmanaged -z "bin\debug\solution_unmanaged.zip" -f src
